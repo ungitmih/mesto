@@ -1,0 +1,15 @@
+.profile__add-button {
+  justify-self: end;
+  width: 150px;
+  height: 50px;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  margin: 0;
+  transition: opacity 0.3s;
+}
+
+.profile__add-button:hover {
+  opacity: 0.6;
+}

@@ -1,0 +1,7 @@
+.elements {
+  display: grid;
+  align-items: center;
+  margin: 0 auto;
+  padding: 50px 200px 66px 200px;
+  max-width: 1184px;
+  }
