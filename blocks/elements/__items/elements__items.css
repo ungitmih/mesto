@@ -7,3 +7,22 @@
   gap: 20px 17px;
   padding: 0;
 }
+
+@media (max-width: 1250px) {
+  .elements__items {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1024px) {
+  .elements__items {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .elements__items {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(9, auto);
+  }
+}

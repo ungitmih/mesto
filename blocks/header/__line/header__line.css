@@ -9,3 +9,10 @@
   opacity: 0.7;
   border: 1px solid #545454;
 }
+
+@media (max-width: 450px) {
+  .header__line {
+    max-width: 450px;
+    margin: 31px auto 0 auto;
+  }
+}

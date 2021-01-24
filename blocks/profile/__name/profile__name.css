@@ -7,3 +7,11 @@
   color: #FFFFFF;
   min-height: 39px;
 }
+
+@media (max-width: 725px) {
+  .profile__name {
+  line-height: 33px;
+  font-size: 27px;
+  text-align: center;
+  }
+}

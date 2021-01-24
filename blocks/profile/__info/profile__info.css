@@ -5,3 +5,11 @@
   max-height: 73px;
   margin: 0;
 }
+
+@media (max-width: 725px) {
+  .profile__info {
+    justify-items: center;
+    width: 282px;
+    height: 54px;
+  }
+}
