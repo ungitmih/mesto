@@ -1,0 +1,10 @@
+.element__container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: flex-end;
+  margin: 25px 21px 32px auto;
+  max-width: 246px;
+  color: #000000;
+  min-height: 24px;
+}
