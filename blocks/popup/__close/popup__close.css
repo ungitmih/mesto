@@ -1,0 +1,18 @@
+.popup__close {
+  background-image: url(../../../images/edit_form/Close_Icon.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  transform: rotate(-45deg);
+  padding: 0;
+  cursor: pointer;
+  margin: 0;
+  transition: opacity 0.3s;
+  border: none;
+}
+
+.popup__close:hover {
+    opacity: 0.6;
+  }

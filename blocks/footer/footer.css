@@ -7,3 +7,21 @@
   padding: 66px 200px 60px 200px;
   margin: 0 auto;
 }
+
+@media (max-width: 1035px) {
+  .footer {
+    padding: 58px 54px 52px 54px;
+  }
+}
+
+@media (max-width: 850px) {
+  .footer {
+    padding: 52px 27px 44px 27px;
+  }
+}
+
+@media (max-width: 425px) {
+  .footer {
+    padding: 48px 19px 36px 19px;
+  }
+}

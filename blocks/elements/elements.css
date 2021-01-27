@@ -2,24 +2,24 @@
   display: grid;
   align-items: center;
   margin: 0 auto;
-  padding: 50px 200px 66px 200px;
+  padding: 50px 200px 0 200px;
   max-width: 1184px;
   }
 
-@media (max-width: 1024px) {
+@media (max-width: 1035px) {
   .elements {
-    padding: 42px 54px 66px 54px;
+    padding: 42px 54px 0 54px;
   }
 }
 
 @media (max-width: 850px) {
   .elements {
-    padding: 42px 27px 54px 27px;
+    padding: 42px 27px 0 27px;
   }
 }
 
 @media (max-width: 425px) {
   .elements {
-    padding: 36px 19px 48px 19px;
+    padding: 36px 19px 0 19px;
   }
 }

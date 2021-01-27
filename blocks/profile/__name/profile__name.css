@@ -13,5 +13,8 @@
   line-height: 33px;
   font-size: 27px;
   text-align: center;
+  max-width: 189px;
+  min-height: 26px;
+  margin: 0 auto;
   }
 }

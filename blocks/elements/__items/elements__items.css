@@ -23,6 +23,6 @@
 @media (max-width: 720px) {
   .elements__items {
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(9, auto);
+    grid-template-rows: repeat(6, auto);
   }
 }

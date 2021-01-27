@@ -30,3 +30,14 @@
 @import url('../blocks/footer/footer.css');
 @import url('../blocks/footer/__copyright/footer__copyright.css');
 /* footer */
+@import url('../blocks/popup/popup.css');
+@import url('../blocks/popup/_opened/popup_opened.css');
+@import url('../blocks/popup/__close/popup__close.css');
+@import url('../blocks/popup/__containter/popup__containter.css');
+@import url('../blocks/popup/__title/popup__title.css');
+/* popup */
+@import url('../blocks/form/form.css');
+@import url('../blocks/form/__fieldset/form__fieldset.css');
+@import url('../blocks/form/__input/form__input.css');
+@import url('../blocks/form/__profile-save/form__profile-save.css');
+/* form */
