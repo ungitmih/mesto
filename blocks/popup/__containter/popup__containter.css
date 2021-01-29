@@ -1,5 +1,8 @@
 .popup__containter {
-  position: relative;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
   margin: 0;
   padding: 34px 36px 37px 36px;
   width: 100%;
