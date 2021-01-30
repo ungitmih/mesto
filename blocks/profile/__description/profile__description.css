@@ -5,16 +5,14 @@
   margin: 16px 0 0 0;
   max-width: 336px;
   color: #FFFFFF;
-  min-height: 18px;
 }
 
-@media (max-width: 725px) {
+@media (max-width: 785px) {
   .profile__description {
   line-height: 17px;
   font-size: 14px;
   text-align: center;
   margin: 14px auto 0 auto;
-  min-height: 14px;
-  max-width: 282px;
+  max-width: 300px;
   }
 }

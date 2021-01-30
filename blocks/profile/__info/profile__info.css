@@ -1,16 +1,15 @@
 .profile__info {
   display: flex;
-  position: relative;
-  flex-direction: column;
-  width: 336px;
-  max-height: 73px;
+  max-width: 500px;
   margin: 0;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-@media (max-width: 725px) {
+@media (max-width: 785px) {
   .profile__info {
     justify-items: center;
-    width: 282px;
-    height: 54px;
+    max-width: 300px;
+    min-height: 54px;
   }
 }

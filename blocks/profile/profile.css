@@ -5,12 +5,12 @@
   margin: 0 auto;
   padding: 40px 200px 0;
   align-items: center;
-  grid-template-columns: 120px 336px 1fr;
+  grid-template-columns: 120px calc(100% - 400px) 1fr;
   grid-template-rows: auto;
   gap: 30px;
 }
 
-@media (max-width: 1035px) {
+@media (max-width: 1130px) {
   .profile {
     padding: 40px 54px 0;
   }
@@ -22,15 +22,15 @@
   }
 }
 
-@media (max-width: 725px) {
+@media (max-width: 785px) {
   .profile {
     align-items: start;
     justify-items: center;
     padding: 42px 27px 0;
     max-width: 282px;
-    max-height: 286px;
+    max-height: 296px;
     grid-template-columns: 1fr;
-    grid-template-rows: 120px 54px 1fr;
+    grid-template-rows: 120px 64px 1fr;
     row-gap: 26px;
   }
 }

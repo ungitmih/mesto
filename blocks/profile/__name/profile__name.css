@@ -3,18 +3,16 @@
   font-size: 42px;
   font-weight: 500;
   margin: 0;
-  max-width: 294px;
+  max-width: 350px;
   color: #FFFFFF;
-  min-height: 39px;
 }
 
-@media (max-width: 725px) {
+@media (max-width: 785px) {
   .profile__name {
   line-height: 33px;
   font-size: 27px;
   text-align: center;
-  max-width: 189px;
-  min-height: 26px;
-  margin: 0 auto;
+  max-width: 220px;
+  margin: 0 0 0 auto;
   }
 }

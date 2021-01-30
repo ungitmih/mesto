@@ -1,28 +1,26 @@
 .header {
   display: flex;
-  justify-content: flex-start;
   align-items: flex-start;
-  height: 74px;
   max-width: 880px;
-  padding: 45px 200px 0;
+  padding: 45px 0 41px 0;
   margin: 0 auto;
-  overflow: hidden;
+  border-bottom: 1px solid rgba(84, 84, 84, .7);
 }
 
 @media (max-width: 1035px) {
   .header {
-    padding: 45px 54px 0;
+    padding: 45px 0 41px 54px;
   }
 }
 
 @media (max-width: 850px) {
   .header {
-    padding: 45px 27px 0;
+    padding: 28px 0 31.6px 46px;
   }
 }
 
 @media (max-width: 450px) {
   .header {
-    padding: 28px 0 0;
+    padding: 28px 0 31.6px 27px;
   }
 }
