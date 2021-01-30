@@ -12,7 +12,7 @@
   grid-column: 2;
   padding: 0;
   cursor: pointer;
-  margin: 15px 0 0 18px;
+  margin: 15px 6px 0 18px;
   transition: opacity 0.3s;
 }
 
@@ -20,11 +20,15 @@
   opacity: 0.6;
 }
 
+.profile__edit-button:focus {
+  outline: none;
+}
+
 @media (max-width: 725px) {
   .profile__edit-button {
   width: 18px;
   height: 18px;
-  margin: 10px 0 0 10px;
+  margin: 9px 17px 0 10px;
   align-self: flex-end;
   }
 }

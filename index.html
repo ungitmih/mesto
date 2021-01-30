@@ -17,9 +17,8 @@
             <section class="profile">
                 <img src="./images/profile/avatar.jpg" alt="Аватар" class="profile__avatar">
                 <div class="profile__info">
-                    <h1 class="profile__name">Жак-Ив Кусто
-                      <button type="button" class="profile__edit-button" aria-label="редактировать"></button>
-                    </h1>
+                    <button type="button" class="profile__edit-button" aria-label="редактировать"></button>
+                    <h1 class="profile__name">Жак-Ив Кусто</h1>
                     <p class="profile__description">Исследователь океана</p>
                 </div>
                 <button type="button" class="profile__add-button" aria-label="добавить"></button>
@@ -101,14 +100,14 @@
               <button type="button" class="popup__close" aria-label="закрыть"></button>
               <p class="popup__title">Редактировать профиль</p>
               <fieldset class="form__fieldset">
-                <input class="form__input" type="text" id="profile-name"  placeholder="Имя" aria-label="имя">
-                <input class="form__input" type="text" id="profile-description"  placeholder="Описание" aria-label="описание">
-                <button type="button" class="form__profile-save">Сохранить</button>
+                <input class="form__input" type="text" id="profile-name"  placeholder="Имя" aria-label="имя" required minlength="2" maxlength="10">
+                <input class="form__input" type="text" id="profile-description"  placeholder="Описание" aria-label="описание" required minlength="2" maxlength="40">
+                <button type="submit" class="form__profile-save">Сохранить</button>
               </fieldset>
             </form>
           </div>
         </div>
-
     </div>
+  <script src="./components/script.js"></script>
 </body>
 </html>

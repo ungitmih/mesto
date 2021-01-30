@@ -1,5 +1,6 @@
 .profile__info {
   display: flex;
+  position: relative;
   flex-direction: column;
   width: 336px;
   max-height: 73px;
