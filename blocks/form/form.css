@@ -1,11 +1,9 @@
 .form {
   max-width: 358px;
-  min-height: 272px;
 }
 
 @media (max-width: 600px) {
   .form {
   max-width: 238px;
-  min-height: 272px;
   }
 }

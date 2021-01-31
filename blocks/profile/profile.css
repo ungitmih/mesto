@@ -1,7 +1,6 @@
 .profile {
   display: grid;
   max-width: 880px;
-  max-height: 120px;
   margin: 0 auto;
   padding: 40px 200px 0;
   align-items: center;
@@ -28,7 +27,6 @@
     justify-items: center;
     padding: 42px 27px 0;
     max-width: 282px;
-    max-height: 296px;
     grid-template-columns: 1fr;
     grid-template-rows: 120px 64px 1fr;
     row-gap: 26px;

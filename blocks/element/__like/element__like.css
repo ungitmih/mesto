@@ -2,7 +2,6 @@
   display: flex;
   margin: 0;
   max-width: 22px;
-  min-height: 19px;
   transition: opacity 0.3s;
   cursor: pointer;
 }

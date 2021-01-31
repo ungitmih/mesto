@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   max-width: 358px;
-  min-height: 182px;
   text-align: center;
   border: none;
 }
@@ -10,6 +9,5 @@
 @media (max-width: 600px) {
   .form__fieldset {
   max-width: 238px;
-  min-height: 175px;
   }
 }
