@@ -1,5 +1,7 @@
 .element {
-  display: flex;
+  display: block;
   margin: 0;
   width: 282px;
+  background: #fff;
+  border-radius: 10px;
 }

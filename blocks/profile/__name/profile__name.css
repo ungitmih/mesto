@@ -5,6 +5,9 @@
   margin: 0;
   max-width: 350px;
   color: #FFFFFF;
+  text-overflow: ellipsis; 
+  white-space: nowrap; 
+  overflow: hidden;
 }
 
 @media (max-width: 785px) {
