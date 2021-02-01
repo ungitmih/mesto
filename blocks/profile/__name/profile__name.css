@@ -5,8 +5,8 @@
   margin: 0;
   max-width: 350px;
   color: #FFFFFF;
-  text-overflow: ellipsis; 
-  white-space: nowrap; 
+  text-overflow: ellipsis;
+  white-space: nowrap;
   overflow: hidden;
 }
 
