@@ -12,6 +12,7 @@
   background-color: transparent;
   padding: 0;
   border: 0;
+  outline: none;
 }
 
 .element__like:hover {
