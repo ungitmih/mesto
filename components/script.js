@@ -13,6 +13,8 @@ let formElement = document.querySelector(".form");
 
 //открытие попапа
 function open() {
+nameInputValue = name;
+jobInputValue = job;
 popup.classList.add("popup_opened");
 }
 //закрытие попапа
