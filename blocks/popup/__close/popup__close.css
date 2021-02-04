@@ -8,11 +8,11 @@
   width: 40px;
   height: 40px;
   background-color: transparent;
-  padding: 0;
   cursor: pointer;
   margin: 0;
   transition: opacity 0.3s;
   border: none;
+  padding: 0;
 }
 
 .popup__close:hover {
@@ -25,8 +25,8 @@
 
 @media (max-width: 425px) {
   .popup__close {
-  width: 30.7px;
-  height: 30.7px;
+  width: 26px;
+  height: 26px;
   right: 0;
   top: -53.62px;
   border-radius: 12px;

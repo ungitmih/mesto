@@ -1,20 +1,20 @@
 let popup = document.querySelector(".popup");
 let buttonEdit = document.querySelector(".profile__edit-button");
 let buttonClose = popup.querySelector(".popup__close");
-let name = document.querySelector(".profile__name").textContent;
-document.querySelector('#profile-name').value = name;
-let job = document.querySelector(".profile__description").textContent;
-document.querySelector('#profile-description').value = job;
-let nameDiv = document.querySelector(".profile__name");
-let jobDiv = document.querySelector(".profile__description");
+
+let name = document.querySelector(".profile__name");
+let job = document.querySelector(".profile__description");
+
 let nameInput = document.querySelector('#profile-name');
 let jobInput = document.querySelector('#profile-description');
+
 let formElement = document.querySelector(".form");
 
 //открытие попапа
 function open() {
-nameInputValue = name;
-jobInputValue = job;
+nameInput.value = name.textContent;
+jobInput.value = job.textContent;
+
 popup.classList.add("popup_opened");
 }
 //закрытие попапа
@@ -26,11 +26,8 @@ popup.classList.remove("popup_opened");
 function formSubmitHandler(evt) {
 evt.preventDefault();
 
-let nameInputValue = nameInput.value;
-let jobInputValue = jobInput.value;
-
-nameDiv.textContent = nameInputValue;
-jobDiv.textContent = jobInputValue;
+name.textContent = nameInput.value;
+job.textContent = jobInput.value;
 
 close();
 }
