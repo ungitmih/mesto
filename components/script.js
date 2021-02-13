@@ -4,7 +4,10 @@ let popupAddPhoto = document.querySelector(".popup-photo");
 
 let buttonEdit = document.querySelector(".profile__edit-button");
 let buttonAdd = document.querySelector(".profile__add-button");
+
 let buttonClose = document.querySelector(".popup__close");
+let buttonCloseProfile = document.querySelector(".popup__close-profile");
+let buttonClosePhoto = document.querySelector(".popup__close-photo");
 
 let name = document.querySelector(".profile__name");
 let job = document.querySelector(".profile__description");
@@ -12,9 +15,13 @@ let job = document.querySelector(".profile__description");
 let nameInput = document.querySelector('#profile-name');
 let jobInput = document.querySelector('#profile-description');
 
-let formElement = document.querySelector(".form");
+let nameInputPhoto = document.querySelector('#photo-name');
+let linkInputPhoto = document.querySelector('#photo-link');
 
-const likePhoto = document.querySelector(".element__like");
+let formElement = document.querySelector(".form");
+let formElementProfile = document.querySelector(".profile-form");
+let formElementPhoto = document.querySelector(".photo-form");
+
 
 //карточки
 const initialCards = [
@@ -54,6 +61,7 @@ function render() {
     elementsItems.append(...html);
 }
 
+//карточки html
 function getItemHTML(item) {
   return  `<li class="element">
   <img class="element__picture" src="${item.link}" alt="">
@@ -64,6 +72,7 @@ function getItemHTML(item) {
 </li>`
 }
 
+//вывод карточек и лайки
 function getItem(item) {
   const newItem = templateEL.content.cloneNode(true);
   const headerEL = newItem.querySelector('.element__title');
@@ -71,6 +80,11 @@ function getItem(item) {
   const pictureEL = newItem.querySelector('.element__picture');
   pictureEL.src = item.link;
   pictureEL.alt = item.name;
+  const likePhoto = newItem.querySelector(".element__like");
+  likePhoto.addEventListener('click', function (evt) {
+    const eventTarget = evt.target;
+    eventTarget.classList.toggle('element__like_active');
+    });
 
   return newItem;
 }
@@ -89,7 +103,7 @@ const close = (popup) => {
   popup.classList.remove("popup_opened");
 }
 
-//отправка формы
+//отправка формы профиля
 function formSubmitHandler(evt) {
 evt.preventDefault();
 
@@ -100,22 +114,29 @@ close(popupProfile);
 close(popupAddPhoto);
 }
 
-//поставить и убрать лайк
-likePhoto.addEventListener('click', function (evt) {
-const eventTarget = evt.target;
-eventTarget.classList.toggle('element__like_active');
-}); 
+//отправка формы фотографий
+function formSubmitHandlerPhoto(evt) {
+evt.preventDefault();
 
-formElement.addEventListener('submit', formSubmitHandler);
+let PhotoName = nameInputPhoto.value;
+let PhotoLink = linkInputPhoto.value;
+
+const ItemsEL = getItem({ name: PhotoName, link: PhotoLink });
+    elementsItems.prepend(ItemsEL);
+    linkInputPhoto.value = ''
+    nameInputPhoto.value = ''
+
+close(popupProfile);
+close(popupAddPhoto);
+}
+
+formElementProfile.addEventListener('submit', formSubmitHandler);
+formElementPhoto.addEventListener('submit', formSubmitHandlerPhoto);
 buttonEdit.addEventListener("click", () => {
 openPopup(popupProfile);
 })
 buttonAdd.addEventListener("click", () => {
 openPopup(popupAddPhoto);
 })
-buttonClose.addEventListener("click", () => {
-close(popupProfile);
-})
-buttonClose.addEventListener("click", () => {
-close(popupAddPhoto);
-})
+buttonCloseProfile.addEventListener("click", () => {close(popupProfile);})
+buttonClosePhoto.addEventListener("click", () => {close(popupAddPhoto);})
