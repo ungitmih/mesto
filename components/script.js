@@ -1,13 +1,14 @@
 let popup = document.querySelector(".popup");
 let popupProfile = document.querySelector(".popup-profile");
 let popupAddPhoto = document.querySelector(".popup-photo");
+let popupOpenImage = document.querySelector(".popup-image");
 
 let buttonEdit = document.querySelector(".profile__edit-button");
 let buttonAdd = document.querySelector(".profile__add-button");
 
-let buttonClose = document.querySelector(".popup__close");
-let buttonCloseProfile = document.querySelector(".popup__close-profile");
-let buttonClosePhoto = document.querySelector(".popup__close-photo");
+let buttonCloseProfile = popupProfile.querySelector(".popup__close");
+let buttonClosePhoto = popupAddPhoto.querySelector(".popup__close");
+let buttonCloseImage = popupOpenImage.querySelector(".popup__close");
 
 let name = document.querySelector(".profile__name");
 let job = document.querySelector(".profile__description");
@@ -54,6 +55,7 @@ const initialCards = [
 const elementsItems = document.querySelector('.elements__items');
 const templateEL = document.querySelector('.elements-template');
 
+//вывод карточек
 function render() {
   const html = initialCards
     .map(getItem)
@@ -65,6 +67,7 @@ function render() {
 function getItemHTML(item) {
   return  `<li class="element">
   <img class="element__picture" src="${item.link}" alt="">
+  <button class="element__delete" type="button" aria-label="удалить"></button>
   <div class="element__container">
     <h2 class="element__title">${item.name}</h2>
     <button class="element__like" type="button" aria-label="нравится"></button>
@@ -72,7 +75,7 @@ function getItemHTML(item) {
 </li>`
 }
 
-//вывод карточек и лайки
+//список элементов
 function getItem(item) {
   const newItem = templateEL.content.cloneNode(true);
   const headerEL = newItem.querySelector('.element__title');
@@ -80,11 +83,23 @@ function getItem(item) {
   const pictureEL = newItem.querySelector('.element__picture');
   pictureEL.src = item.link;
   pictureEL.alt = item.name;
+
+  //оайки
   const likePhoto = newItem.querySelector(".element__like");
   likePhoto.addEventListener('click', function (evt) {
     const eventTarget = evt.target;
     eventTarget.classList.toggle('element__like_active');
     });
+
+  const deletePhoto = newItem.querySelector('.element__delete');
+  deletePhoto.addEventListener('click', handledeletePhoto);
+
+  //открытиые изображения
+  pictureEL.addEventListener('click', () => {
+  openPopup(popupOpenImage)
+  popupPicture.src = pictureEL.src;
+  popupPictureName.textContent = pictureEL.alt;
+})
 
   return newItem;
 }
@@ -92,15 +107,23 @@ function getItem(item) {
 render();
 
 //открытие попапов
-const openPopup = (overlay) => {
-  nameInput.value = name.textContent; 
-  jobInput.value = job.textContent;
-  overlay.classList.add("popup_opened");
+const openPopup = (popup) => {
+  popup.classList.add("popup_opened");
 }
 
 //закрытие попапов
 const close = (popup) => {
   popup.classList.remove("popup_opened");
+}
+
+const popupPicture = document.querySelector('.popup__picture')
+const popupPictureName = document.querySelector('.popup__picturecaption')
+
+//удаление фотографий
+function handledeletePhoto(evt) {
+  const photoItem = evt.target;
+  const photoElement = photoItem.closest('.element');
+  photoElement.remove();
 }
 
 //отправка формы профиля
@@ -111,7 +134,6 @@ name.textContent = nameInput.value;
 job.textContent = jobInput.value;
 
 close(popupProfile);
-close(popupAddPhoto);
 }
 
 //отправка формы фотографий
@@ -126,7 +148,6 @@ const ItemsEL = getItem({ name: PhotoName, link: PhotoLink });
     linkInputPhoto.value = ''
     nameInputPhoto.value = ''
 
-close(popupProfile);
 close(popupAddPhoto);
 }
 
@@ -134,9 +155,12 @@ formElementProfile.addEventListener('submit', formSubmitHandler);
 formElementPhoto.addEventListener('submit', formSubmitHandlerPhoto);
 buttonEdit.addEventListener("click", () => {
 openPopup(popupProfile);
+nameInput.value = name.textContent; 
+jobInput.value = job.textContent;
 })
 buttonAdd.addEventListener("click", () => {
 openPopup(popupAddPhoto);
 })
 buttonCloseProfile.addEventListener("click", () => {close(popupProfile);})
 buttonClosePhoto.addEventListener("click", () => {close(popupAddPhoto);})
+buttonCloseImage.addEventListener("click", () => {close(popupOpenImage);})

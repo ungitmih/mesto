@@ -1,0 +1,10 @@
+.popup__picturecaption {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  line-height: 15px;
+  font-size: 12px;
+  max-width: 291px;
+  font-weight: normal;
+  margin: 10px 0 0 0;
+}
