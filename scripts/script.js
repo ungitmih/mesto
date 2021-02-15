@@ -18,12 +18,11 @@ const jobInput = document.querySelector('#profile-description');
 const nameInputPhoto = document.querySelector('#photo-name');
 const linkInputPhoto = document.querySelector('#photo-link');
 
-const formElement = document.querySelector(".form");
 const formElementProfile = document.querySelector(".profile-form");
 const formElementPhoto = document.querySelector(".photo-form");
 
 const elementsItems = document.querySelector('.elements__items');
-const templateEL = document.querySelector('.elements-template');
+const templateEl = document.querySelector('.elements-template');
 
 //вывод карточек
 function render() {
@@ -33,26 +32,14 @@ function render() {
     elementsItems.append(...html);
 }
 
-//карточки html
-function getItemHTML(item) {
-  return  `<li class="element">
-  <img class="element__picture" src="${item.link}" alt="">
-  <button class="element__delete" type="button" aria-label="удалить"></button>
-  <div class="element__container">
-    <h2 class="element__title">${item.name}</h2>
-    <button class="element__like" type="button" aria-label="нравится"></button>
-  </div>
-</li>`
-}
-
 //список элементов
 function getItem(item) {
-  const newItem = templateEL.content.cloneNode(true);
-  const headerEL = newItem.querySelector('.element__title');
-  headerEL.textContent = item.name;
-  const pictureEL = newItem.querySelector('.element__picture');
-  pictureEL.src = item.link;
-  pictureEL.alt = item.name;
+  const newItem = templateEl.content.cloneNode(true);
+  const headerEl = newItem.querySelector('.element__title');
+  headerEl.textContent = item.name;
+  const pictureEl = newItem.querySelector('.element__picture');
+  pictureEl.src = item.link;
+  pictureEl.alt = item.name;
 
   //лайки
   const likePhoto = newItem.querySelector(".element__like");
@@ -62,12 +49,13 @@ function getItem(item) {
     });
 
   const deletePhoto = newItem.querySelector('.element__delete');
-  deletePhoto.addEventListener('click', handledeletePhoto);
+  deletePhoto.addEventListener('click', handleDeletePhoto);
 
   //открытиые изображения
-  pictureEL.addEventListener('click', () => {
-  popupPicture.src = pictureEL.src;
-  popupPictureName.textContent = pictureEL.alt;
+  pictureEl.addEventListener('click', () => {
+  popupPicture.src = pictureEl.src;
+  popupPicture.alt = pictureEl.alt;
+  popupPictureName.textContent = pictureEl.alt;
   openPopup(popupOpenImage);
 })
 
@@ -109,7 +97,7 @@ const popupPicture = document.querySelector('.popup__picture')
 const popupPictureName = document.querySelector('.popup__picturecaption')
 
 //удаление фотографий
-function handledeletePhoto(evt) {
+function handleDeletePhoto(evt) {
   const photoItem = evt.target;
   const photoElement = photoItem.closest('.element');
   photoElement.remove();
@@ -130,10 +118,10 @@ function formSubmitHandlerPhoto(evt) {
 evt.preventDefault();
 
 const photoName = nameInputPhoto.value;
-const PhotoLink = linkInputPhoto.value;
+const photoLink = linkInputPhoto.value;
 
-const ItemsEL = getItem({ name: photoName, link: PhotoLink });
-    elementsItems.prepend(ItemsEL);
+const itemsEL = getItem({ name: photoName, link: photoLink });
+    elementsItems.prepend(itemsEL);
     linkInputPhoto.value = ''
     nameInputPhoto.value = ''
 
