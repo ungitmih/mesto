@@ -1,0 +1,9 @@
+.form__error {
+  display: flex;
+  margin-bottom: 13px;
+  color: #FF0000;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  width: 358px;
+}

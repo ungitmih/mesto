@@ -51,7 +51,7 @@ function getItem(item) {
   const deletePhoto = newItem.querySelector('.element__delete');
   deletePhoto.addEventListener('click', handleDeletePhoto);
 
-  //открытиые изображения
+  //открытые изображения
   pictureEl.addEventListener('click', () => {
   popupPicture.src = pictureEl.src;
   popupPicture.alt = pictureEl.alt;
@@ -67,6 +67,7 @@ render();
 //открытие попапов
 const openPopup = (popup) => {
   popup.classList.add("popup_opened");
+  document.addEventListener('keydown', closeOnEsc);
 }
 
 buttonEdit.addEventListener("click", () => {
@@ -81,6 +82,7 @@ openPopup(popupAddPhoto);
 //закрытие попапов
 const closePopup = (popup) => {
   popup.classList.remove("popup_opened");
+  document.addEventListener('keydown', closeOnEsc);
 }
 
 buttonCloseProfile.addEventListener("click", () => {
@@ -95,6 +97,24 @@ closePopup(popupOpenImage);
 
 const popupPicture = document.querySelector('.popup__picture')
 const popupPictureName = document.querySelector('.popup__picturecaption')
+
+//закрытие попапов по нажатию на темный фон
+function closeOverlay(evt) {
+  if (evt.target === evt.currentTarget) {
+    closePopup(evt.target)
+  }
+}
+
+//закрытие попапов по нажатию на escape
+function closeOnEsc(evt) {
+  if (evt.key === "Escape") {
+    closePopup(document.querySelector('.popup_opened'))
+  }
+}
+
+popupProfile.addEventListener('mousedown', closeOverlay);
+popupAddPhoto.addEventListener('mousedown', closeOverlay);
+popupOpenImage.addEventListener('mousedown', closeOverlay);
 
 //удаление фотографий
 function handleDeletePhoto(evt) {
