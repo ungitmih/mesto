@@ -18,8 +18,8 @@ const jobInput = document.querySelector('#profile-description');
 const nameInputPhoto = document.querySelector('#photo-name');
 const linkInputPhoto = document.querySelector('#photo-link');
 
-const formElementProfile = document.querySelector(".profile-form");
-const formElementPhoto = document.querySelector(".photo-form");
+const formElementProfile = popupProfile.querySelector(".form");
+const formElementPhoto = popupAddPhoto.querySelector(".form");
 
 const elementsItems = document.querySelector('.elements__items');
 const templateEl = document.querySelector('.elements-template');
