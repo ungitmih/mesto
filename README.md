@@ -1,4 +1,4 @@
-# Проект 5: Mesto
+# Проект 6: Mesto
 ## Яндекс.Практикум
 
 **Описание**
@@ -11,6 +11,7 @@
 
 **Технологии**
 * JavaScript
+* Валидация форм
 * Grid таблицы
 * Адаптивная верстка
 * Flexbox-верстка
@@ -19,7 +20,8 @@
 
 **Планы по доработке**
 * Сделать сохранение информации на сервере
+* Добавить возможность менять аватар
 
 ### Ссылки
 * [Ссылка на GitHub Pages](https://ungitmih.github.io/mesto/)
-* [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4)
+* [Ссылка на макет в Figma](https://www.figma.com/file/kRVLKwYG3d1HGLvh7JFWRT/JavaScript.-Sprint-6)
