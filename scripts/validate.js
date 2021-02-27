@@ -26,7 +26,7 @@ const hideError = (formElement, inputElement, inputErrorClass, errorClass) => {
 const inputValidate = (formElement, inputElement, inputErrorClass, errorClass) => {
   if (!inputElement.validity.valid) {
     showError(formElement, inputElement, inputElement.validationMessage, inputErrorClass, errorClass)
-  }else {
+  } else {
     hideError(formElement, inputElement, inputErrorClass, errorClass)
   }
 }
@@ -53,7 +53,7 @@ const setEventListeners = (formElement, inputSelector, submitButtonSelector, ina
   const buttonElement = formElement.querySelector(submitButtonSelector)
 
   inputList.forEach((inputElement) => {
-    inputElement.addEventListener("input",() => {
+    inputElement.addEventListener("input", () => {
       inputValidate(formElement, inputElement, errorClass, inputErrorClass)
       buttonToggle(inputList, buttonElement, inactiveButtonClass);
     })
@@ -62,7 +62,14 @@ const setEventListeners = (formElement, inputSelector, submitButtonSelector, ina
 }
 
 //валидация полей
-const enableValidation = ({formSelector, inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass, errorClass}) => {
+const enableValidation = ({
+  formSelector,
+  inputSelector,
+  submitButtonSelector,
+  inactiveButtonClass,
+  inputErrorClass,
+  errorClass
+}) => {
   const formList = Array.from(document.querySelectorAll(formSelector));
   formList.forEach(formElement => {
     formElement.addEventListener('submit', evt => {
