@@ -49,18 +49,19 @@ _setEventListeners() {
 class DefaultCard extends Card {
   constructor(data, cardSelector) {
     super(cardSelector);
-    this._title = data.title;
+    this._title = data.name;
+    this._image = data.link;
     this._description = data.description;
-    this._image = data.image;
   }
 
   generateCard() {
     this._element = super._getTemplate();
     super._setEventListeners();
-
-    this._element.querySelector('.element__picture').src = this._image;
-    this._element.querySelector('.element__title').alt = this._title;
-
+    
+    this._photoImage = this._element.querySelector('.element__picture');
+    this._photoImage.src = this._image;
+    this._photoImage.alt = `Фотография ${this._title}`;
+    
     return this._element;
   }
 }
@@ -68,15 +69,15 @@ class DefaultCard extends Card {
 const renderElements = () => {
   elementsItems.innerHTML = '';
   initialCards.forEach((item) => {
-    const card = new DefaultCard(item, '.elements-template');
-    const cardElement = card.generateCard();
-    elementsItems.append(cardElement);
+  const card = new DefaultCard(item, '.elements-template');
+  const cardElement = card.generateCard();
+  elementsItems.append(cardElement);
   });
 };
 
 renderElements(true);
 
-/*
+/* Код для помощи
 class Card {
   constructor(data, templateSelector, settings, ownerId, { handleCardClick, handleDeleteCardClick, setLike, deleteLike }) {
     this._data = data;
@@ -175,8 +176,9 @@ class Card {
     return this._element;
   }
 }
+*/
 
-
+/*
 //вывод карточек
 function renderCard() {
   const html = initialCards
@@ -201,6 +203,7 @@ function createCard(item) {
     eventTarget.classList.toggle('element__like_active');
   });
 
+  //удаление
   const deletePhoto = newItem.querySelector('.element__delete');
   deletePhoto.addEventListener('click', handleDeletePhoto);
 
