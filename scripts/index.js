@@ -1,8 +1,12 @@
 import {Card} from './Card.js';
+import {FormValidator} from "./FormValidator.js";
 
 const popupProfile = document.querySelector(".popup-profile");
 const popupAddPhoto = document.querySelector(".popup-photo");
 export const popupOpenImage = document.querySelector(".popup-image");
+
+export const popupPicture = document.querySelector('.popup__picture');
+export const popupPictureName = document.querySelector('.popup__picturecaption');
 
 const buttonEdit = document.querySelector(".profile__edit-button");
 const buttonAdd = document.querySelector(".profile__add-button");
@@ -24,7 +28,6 @@ const formElementProfile = popupProfile.querySelector(".form");
 const formElementPhoto = popupAddPhoto.querySelector(".form");
 
 const elementsItems = document.querySelector('.elements__items');
-const templateEl = document.querySelector('.elements-template');
 
 //карточки
 const initialCards = [{
@@ -54,58 +57,22 @@ const initialCards = [{
 ];
 
 initialCards.forEach((item) => {
-  const card = new Card(item, '.elements-template' );
-  const cardElement = card.generateCard();
-  elementsItems.append(cardElement)
+  const itemEL = new Card(item, '.elements-template' );
+  const newItem = itemEL.generateCard();
+  elementsItems.append(newItem)
 })
 
-export const popupPicture = document.querySelector('.popup__picture')
-export const popupPictureName = document.querySelector('.popup__picturecaption')
+const formValidation = {
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__profile-save',
+  inactiveButtonClass: 'form__button-disabled',
+  inputErrorClass: 'form__field-invalid',
+  errorClass: 'form__error'
+};
 
-/*
-//вывод карточек
-function renderCard() {
-  const html = initialCards
-    .map(createCard)
-
-  elementsItems.append(...html);
-}
-
-//список элементов
-function createCard(item) {
-  const newItem = templateEl.content.cloneNode(true);
-  const headerEl = newItem.querySelector('.element__title');
-  headerEl.textContent = item.name;
-  const pictureEl = newItem.querySelector('.element__picture');
-  pictureEl.src = item.link;
-  pictureEl.alt = item.name;
-
-  //лайки
-  const likePhoto = newItem.querySelector(".element__like");
-  likePhoto.addEventListener('click', function (evt) {
-    const eventTarget = evt.target;
-    eventTarget.classList.toggle('element__like_active');
-  });
-
-  //удаление
-  const deletePhoto = newItem.querySelector('.element__delete');
-  deletePhoto.addEventListener('click', handleDeletePhoto);
-
-  //открытые изображения
-  pictureEl.addEventListener('click', () => {
-    popupPicture.src = pictureEl.src;
-    popupPicture.alt = pictureEl.alt;
-    popupPictureName.textContent = pictureEl.alt;
-    openPopup(popupOpenImage);
-  })
-
-  return newItem;
-}
-
-renderCard();
-*/
 //открытие попапов
-const openPopup = (popup) => {
+export const openPopup = (popup) => {
   popup.classList.add("popup_opened");
   document.addEventListener('keydown', closeOnEsc);
 }
@@ -114,9 +81,13 @@ buttonEdit.addEventListener("click", () => {
   nameInput.value = name.textContent;
   jobInput.value = job.textContent;
   openPopup(popupProfile);
+  profileValidate.enableValidation();
+  profileValidate.resetForm();
 })
 buttonAdd.addEventListener("click", () => {
   openPopup(popupAddPhoto);
+  photoValidate.enableValidation();
+  photoValidate.resetForm()
 })
 
 //закрытие попапов
@@ -134,6 +105,9 @@ buttonClosePhoto.addEventListener("click", () => {
 buttonCloseImage.addEventListener("click", () => {
   closePopup(popupOpenImage);
 })
+
+const profileValidate = new FormValidator(formValidation, formElementProfile)
+const photoValidate = new FormValidator(formValidation, formElementPhoto)
 
 //закрытие попапов по нажатию на темный фон
 function closeOverlay(evt) {
@@ -153,13 +127,6 @@ popupProfile.addEventListener('mousedown', closeOverlay);
 popupAddPhoto.addEventListener('mousedown', closeOverlay);
 popupOpenImage.addEventListener('mousedown', closeOverlay);
 
-//удаление фотографий
-function handleDeletePhoto(evt) {
-  const photoItem = evt.target;
-  const photoElement = photoItem.closest('.element');
-  photoElement.remove();
-}
-
 //отправка формы профиля
 function formSubmitHandler(evt) {
   evt.preventDefault();
@@ -177,11 +144,10 @@ function formSubmitHandlerPhoto(evt) {
   const photoName = nameInputPhoto.value;
   const photoLink = linkInputPhoto.value;
 
-  const itemsEL = createCard({
-    name: photoName,
-    link: photoLink
-  });
-  elementsItems.prepend(itemsEL);
+  const itemsEL = new Card({name: photoName, link: photoLink}, '.elements-template')
+  const newCard = itemsEL.generateCard();
+  elementsItems.prepend(newCard);
+
   linkInputPhoto.value = ''
   nameInputPhoto.value = ''
 

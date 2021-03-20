@@ -1,54 +1,57 @@
 import {popupOpenImage} from './index.js';
 import {popupPicture} from './index.js';
 import {popupPictureName} from './index.js';
+import {openPopup} from './index.js';
 
 export class Card {
-    constructor(item, cardSelector) {
-      this._name = item.name
-      this._link = item.link
-      this._cardSelector = cardSelector
-      this._alt = item.name
-    }
-    _getTemplate () {
-      const cardElement = document
-        .querySelector(this._cardSelector)
-        .content
-        .querySelector('.element')
-        .cloneNode(true);
-  
-      return cardElement;
-    }
-    generateCard () {
-      this._element = this._getTemplate()
-  
-      this._element.querySelector('.element__title').textContent = this._name; // Добавляем название
-      this._element.querySelector('.element__picture').src = this._link; // Добавляем ссылку
-      this._element.querySelector('.element__picture').alt = this._name; // Добавляем alt
-  
-      this._setEventListeners()
-      return this._element
-    }
-    _setEventListeners () {
-      this._element.querySelector('.element__delete').addEventListener('click', this._removeCard)
-      this._element.querySelector('.element__like').addEventListener('click', this._likeButton)
-      this._element.querySelector('.element__picture').addEventListener('click', this._openImage)
-    }
-  
-    _removeCard = () => {
-      this._element.remove();
+  constructor(item, cardSelector) {
+    this._cardSelector = cardSelector
+    this._name = item.name
+    this._src = item.link
+    this._alt = item.name
   }
-    _likeButton = () => {
-      this._element.querySelector('.element__like').classList.toggle('element__like_active')
-    }
+
+  _getTemplate () {
+    const newItem = document
+      .querySelector(this._cardSelector)
+      .content
+      .querySelector('.element')
+      .cloneNode(true);
   
-    _openImage = () => {
-      popupPicture.src = this._link;
-      popupPicture.alt = this._alt;
-      popupPictureName.textContent = this._name;
-      handlePopupOpen(popupOpenImage);
-    }
+    return newItem;
+  }
+
+  _setEventListeners () {
+    this._element.querySelector('.element__picture').addEventListener('click', this._openPhoto)
+    this._element.querySelector('.element__like').addEventListener('click', this._likePhoto)
+    this._element.querySelector('.element__delete').addEventListener('click', this._deletePhoto)
   }
   
-  const handlePopupOpen = (popup) => {
-    popup.classList.add('popup_opened');
-  } // Функция открытия попапа
+  _likePhoto = () => {
+    this._element.querySelector('.element__like').classList.toggle('element__like_active')
+  }
+
+  _deletePhoto = () => {
+    this._element.remove();
+  }
+
+  generateCard () {
+    this._element = this._getTemplate()
+
+    this._element.querySelector('.element__title').textContent = this._name;
+    this._imgEl = this._element.querySelector('.element__picture')
+
+    this._imgEl.src = this._src;
+    this._imgEl.alt = this._name;
+  
+    this._setEventListeners()
+    return this._element
+  }
+
+  _openPhoto = () => {
+    popupPicture.src = this._src;
+    popupPicture.alt = this._alt;
+    popupPictureName.textContent = this._name;
+    openPopup(popupOpenImage);
+  }
+}
