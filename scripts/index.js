@@ -57,10 +57,14 @@ const initialCards = [{
 ];
 
 initialCards.forEach((item) => {
+  elementsItems.append(createCard(item));
+})
+
+function createCard(item) {
   const itemEL = new Card(item, '.elements-template' );
   const newItem = itemEL.generateCard();
-  elementsItems.append(newItem)
-})
+  return newItem;
+}
 
 const formValidation = {
   formSelector: '.form',
@@ -81,12 +85,10 @@ buttonEdit.addEventListener("click", () => {
   nameInput.value = name.textContent;
   jobInput.value = job.textContent;
   openPopup(popupProfile);
-  profileValidate.enableValidation();
   profileValidate.resetForm();
 })
 buttonAdd.addEventListener("click", () => {
   openPopup(popupAddPhoto);
-  photoValidate.enableValidation();
   photoValidate.resetForm()
 })
 
@@ -144,9 +146,8 @@ function formSubmitHandlerPhoto(evt) {
   const photoName = nameInputPhoto.value;
   const photoLink = linkInputPhoto.value;
 
-  const itemsEL = new Card({name: photoName, link: photoLink}, '.elements-template')
-  const newCard = itemsEL.generateCard();
-  elementsItems.prepend(newCard);
+  const itemsEL = ({name: photoName, link: photoLink})
+  elementsItems.prepend(createCard(itemsEL));
 
   linkInputPhoto.value = ''
   nameInputPhoto.value = ''
@@ -156,3 +157,6 @@ function formSubmitHandlerPhoto(evt) {
 
 formElementProfile.addEventListener('submit', formSubmitHandler);
 formElementPhoto.addEventListener('submit', formSubmitHandlerPhoto);
+
+photoValidate.enableValidation();
+profileValidate.enableValidation();

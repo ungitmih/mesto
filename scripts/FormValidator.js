@@ -6,7 +6,7 @@ export class FormValidator {
     this._inactiveButtonClass = validationSelector.inactiveButtonClass
     this._inputErrorClass = validationSelector.inputErrorClass
     this._errorClass = validationSelector.errorClass
-    this._input = Array.from(this._form.querySelectorAll(this._inputSelector));
+    this._inputs = Array.from(this._form.querySelectorAll(this._inputSelector));
   }
 
   //показать сообщение об ошибке
@@ -36,7 +36,7 @@ export class FormValidator {
   }
 
   _inputIsValid () {
-    return this._input.some((inputElement) => {
+    return this._inputs.some((inputElement) => {
       return !inputElement.validity.valid
     })
   }
@@ -60,7 +60,7 @@ export class FormValidator {
   _setEventListeners () {
     this._buttonElement = this._form.querySelector(this._submitButtonSelector)
     this._buttonToggle()
-    this._input.forEach((inputElement) => {
+    this._inputs.forEach((inputElement) => {
       inputElement.addEventListener("input",() => {
         this._inputValidate (inputElement)
         this._buttonToggle()
@@ -79,7 +79,7 @@ export class FormValidator {
 
   //очистка полей
   resetForm () {
-    this._input.forEach((form) => {
+    this._inputs.forEach((form) => {
       this._hideError (form)
     });
     this._buttonToggle()
