@@ -1,60 +1,34 @@
-import {Card} from './Card.js';
-import {FormValidator} from "./FormValidator.js";
+import {Card} from '../components/Card.js';
+import {FormValidator} from "../components/FormValidator.js";
 
-const popupProfile = document.querySelector(".popup-profile");
-const popupAddPhoto = document.querySelector(".popup-photo");
-export const popupOpenImage = document.querySelector(".popup-image");
+import {popupProfile} from "../utils/constants.js";
+import {popupAddPhoto} from "../utils/constants.js";
+import {popupOpenImage} from "../utils/constants.js";
 
-export const popupPicture = document.querySelector('.popup__picture');
-export const popupPictureName = document.querySelector('.popup__picturecaption');
+import {buttonEdit} from "../utils/constants.js";
+import {buttonAdd} from "../utils/constants.js";
 
-const buttonEdit = document.querySelector(".profile__edit-button");
-const buttonAdd = document.querySelector(".profile__add-button");
+import {buttonCloseProfile} from "../utils/constants.js";
+import {buttonClosePhoto} from "../utils/constants.js";
+import {buttonCloseImage} from "../utils/constants.js";
 
-const buttonCloseProfile = popupProfile.querySelector(".popup__close");
-const buttonClosePhoto = popupAddPhoto.querySelector(".popup__close");
-const buttonCloseImage = popupOpenImage.querySelector(".popup__close");
+import {name} from "../utils/constants.js";
+import {job} from "../utils/constants.js";
 
-const name = document.querySelector(".profile__name");
-const job = document.querySelector(".profile__description");
+import {nameInput} from "../utils/constants.js";
+import {jobInput} from "../utils/constants.js";
 
-const nameInput = document.querySelector('#profile-name');
-const jobInput = document.querySelector('#profile-description');
+import {nameInputPhoto} from "../utils/constants.js";
+import {linkInputPhoto} from "../utils/constants.js";
 
-const nameInputPhoto = document.querySelector('#photo-name');
-const linkInputPhoto = document.querySelector('#photo-link');
+import {formElementProfile} from "../utils/constants.js";
+import {formElementPhoto} from "../utils/constants.js";
 
-const formElementProfile = popupProfile.querySelector(".form");
-const formElementPhoto = popupAddPhoto.querySelector(".form");
+import {elementsItems} from "../utils/constants.js";
 
-const elementsItems = document.querySelector('.elements__items');
+import {initialCards} from "../utils/constants.js";
 
-//карточки
-const initialCards = [{
-  name: 'Архыз',
-  link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-},
-{
-  name: 'Челябинская область',
-  link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-},
-{
-  name: 'Иваново',
-  link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-},
-{
-  name: 'Камчатка',
-  link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-},
-{
-  name: 'Холмогорский район',
-  link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-},
-{
-  name: 'Байкал',
-  link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-}
-];
+import {formValidation} from "../utils/constants.js";
 
 initialCards.forEach((item) => {
   elementsItems.append(createCard(item));
@@ -65,15 +39,6 @@ function createCard(item) {
   const newItem = itemEL.generateCard();
   return newItem;
 }
-
-const formValidation = {
-  formSelector: '.form',
-  inputSelector: '.form__input',
-  submitButtonSelector: '.form__profile-save',
-  inactiveButtonClass: 'form__button-disabled',
-  inputErrorClass: 'form__field-invalid',
-  errorClass: 'form__error'
-};
 
 //открытие попапов
 export const openPopup = (popup) => {
