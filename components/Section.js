@@ -1,8 +1,23 @@
-class Section {
-  constructor(item, renderer) {
-    this._cardSelector = cardSelector
-    this._name = item.name
-    this._src = item.link
-    this._alt = item.name
+export default class Section {
+  constructor({items, renderer}, containerSelector) {
+    this._renderedItems = items;
+    this._renderer = renderer;
+    this._container = document.querySelector(containerSelector);
+  }
+
+  renderItems() {
+    this._renderedItems.forEach(item => this._renderer(item))
+  }
+
+  addItem(element) {
+    this._container.append(element)
+  }
+
+  addImage(element) {
+    this._container.prepend(element)
+  }
+
+  reset() {
+    this._container.innerHTML = '';
   }
 }

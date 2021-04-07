@@ -1,38 +1,34 @@
-import {popupOpenImage} from "../utils/constants.js";
-import {popupPicture} from "../utils/constants.js";
-import {popupPictureName} from "../utils/constants.js";
-import {openPopup} from "../pages/index.js";
-
-export class Card {
-  constructor(item, cardSelector) {
+export default class Card {
+  constructor(item, cardSelector, {handleCardClick}) {
     this._cardSelector = cardSelector
     this._name = item.name
     this._src = item.link
     this._alt = item.name
+    this._handleCardClick = handleCardClick
   }
 
   _getTemplate () {
-    const newItem = document
+    const newEl = document
       .querySelector(this._cardSelector)
       .content
       .querySelector('.element')
       .cloneNode(true);
-  
-    return newItem;
+
+    return newEl;
   }
 
   _setEventListeners () {
-    this._element.querySelector('.element__picture').addEventListener('click', this._openPhoto)
-    this._element.querySelector('.element__like').addEventListener('click', this._likePhoto)
-    this._element.querySelector('.element__delete').addEventListener('click', this._deletePhoto)
-  }
-  
-  _likePhoto = () => {
-    this._element.querySelector('.element__like').classList.toggle('element__like_active')
-  }
+    this._imgEl.addEventListener('click', () => {
+      this._handleCardClick(this._name, this._src)
+    })
 
-  _deletePhoto = () => {
-    this._element.remove();
+    this._handleLike.addEventListener('click', () => {
+      this._likePhoto()
+    })
+
+    this._element.querySelector('.element__delete').addEventListener('click', () => {
+      this._deletePhoto()
+    })
   }
 
   generateCard () {
@@ -42,16 +38,19 @@ export class Card {
     this._imgEl = this._element.querySelector('.element__picture')
 
     this._imgEl.src = this._src;
-    this._imgEl.alt = this._name;
-  
+    this._imgEl.alt = this._alt;
+
+    this._handleLike = this._element.querySelector('.element__like')
+
     this._setEventListeners()
     return this._element
   }
 
-  _openPhoto = () => {
-    popupPicture.src = this._src;
-    popupPicture.alt = this._alt;
-    popupPictureName.textContent = this._name;
-    openPopup(popupOpenImage);
+  _deletePhoto () {
+    this._element.remove();
+  }
+
+  _likePhoto () {
+    this._handleLike.classList.toggle('element__like_active')
   }
 }

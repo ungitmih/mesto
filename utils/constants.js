@@ -1,14 +1,21 @@
 export const popupProfile = document.querySelector(".popup-profile");
+export const profilePopupSelector = '.popup-profile';
 export const popupAddPhoto = document.querySelector(".popup-photo");
+export const photoPopupSelector = '.popup-photo';
 export const popupOpenImage = document.querySelector(".popup-image");
+export const openImageSelector = '.popup-image'
 
 export const popupPicture = document.querySelector('.popup__picture');
+export const popupPic = '.popup__picture'
 export const popupPictureName = document.querySelector('.popup__picturecaption');
+export const popupPicName = '.popup__picturecaption'
 
 export const buttonEdit = document.querySelector(".profile__edit-button");
+export const popUpEditButtonSelector = '.profile__edit-button'
 export const buttonAdd = document.querySelector(".profile__add-button");
 
 export const buttonCloseProfile = popupProfile.querySelector(".popup__close");
+export const popupButtonClose = '.popup__close'
 export const buttonClosePhoto = popupAddPhoto.querySelector(".popup__close");
 export const buttonCloseImage = popupOpenImage.querySelector(".popup__close");
 
@@ -24,7 +31,9 @@ export const linkInputPhoto = document.querySelector('#photo-link');
 export const formElementProfile = popupProfile.querySelector(".form");
 export const formElementPhoto = popupAddPhoto.querySelector(".form");
 
-export const elementsItems = document.querySelector('.elements__items');
+export const templateEl = '.elements-template'
+export const elementsItems  = document.querySelector('.elements__items');
+export const elementsItemsSelector = '.elements__items'
 
 //карточки
 export const initialCards = [{
@@ -61,3 +70,8 @@ export const formValidation = {
     inputErrorClass: 'form__field-invalid',
     errorClass: 'form__error'
   };
+
+export const profileSelectors = {
+    profileName: '.profile__name',
+    profileDescription: '.profile__description'
+  }
