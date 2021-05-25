@@ -2,8 +2,10 @@
   line-height: 29px;
   font-size: 24px;
   font-weight: 900;
-  margin: 0;
-  max-width: 220px;
+  margin-left: 21px;
+  margin-top: 25px;
+  margin-bottom: 31px;
+  max-width: 70%;
   color: #000000;
   text-overflow: ellipsis;
   white-space: nowrap;

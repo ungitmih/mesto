@@ -1,9 +1,8 @@
 .element__container {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  align-items: center;
-  margin: 25px auto 32px 21px;
-  max-width: 246px;
+  position: absolute;
+  text-align: center;
+  bottom: 10px;
+  left: 240px;
+  max-width: 30px;
   color: #000000;
 }

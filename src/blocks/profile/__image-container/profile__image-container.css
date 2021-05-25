@@ -1,0 +1,18 @@
+.profile__image-container {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s;
+}
+.profile__image-container:hover {
+  cursor: pointer;
+}
+
+.profile__image-container:hover .profile__image-edit {
+  display: block;
+}
+
+.profile__image-container:hover .profile__avatar {
+  opacity: 0.3;
+}

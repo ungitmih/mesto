@@ -14,7 +14,10 @@
 
   <main>
     <section class="profile">
-      <img src="<%=require('./images/profile/avatar.jpg')%>" alt="Аватар" class="profile__avatar">
+      <div class="profile__image-container">
+        <img src="<%=require('./images/profile/avatar.jpg')%>" alt="Аватар" class="profile__avatar">
+        <button class="profile__image-edit" type="button"></button>
+      </div>
       <div class="profile__info">
         <h1 class="profile__name">Жак-Ив Кусто</h1>
         <button type="button" class="profile__edit-button" aria-label="редактировать"></button>
@@ -34,6 +37,32 @@
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
 
+  <div class="popup popup-delete">
+    <div class="popup__containter">
+      <form class="form" name="form-profile" novalidate>
+        <button class="popup__close" type="button"></button>
+        <h2 class="popup__title">Вы уверены?</h2>
+        <fieldset class="form__fieldset">
+          <button type="submit" class="form__profile-save" value="Да">Да</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup popup-update">
+    <div class="popup__containter">
+      <form class="form" name="form-profile" novalidate>
+        <button type="button" class="popup__close" aria-label="закрыть"></button>
+        <h2 class="popup__title">Обновить аватар</h2>
+        <fieldset class="form__fieldset">
+          <input class="form__input" type="url" id="profile-avatar" placeholder="Ссылка на аватар" aria-label="ссылка на аватар" name="link" required>
+          <span class="profile-avatar-error"></span>
+          <button type="submit" class="form__profile-save" disabled="true" value="Сохранить">Сохранить</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+
   <div class="popup popup-profile">
     <div class="popup__containter">
       <form class="form" name="form-profile" novalidate>
@@ -44,9 +73,9 @@
             required minlength="2" maxlength="40">
           <span class="profile-name-error"></span>
           <input class="form__input" type="text" id="profile-description" placeholder="Описание" aria-label="описание"
-            name="description" required minlength="2" maxlength="200">
+            name="about" required minlength="2" maxlength="200">
           <span class="profile-description-error"></span>
-          <button type="submit" class="form__profile-save" disabled="true">Сохранить</button>
+          <button type="submit" class="form__profile-save" disabled="true" value="Сохранить">Сохранить</button>
         </fieldset>
       </form>
     </div>
@@ -64,7 +93,7 @@
           <input class="form__input form__input_link" type="url" id="photo-link" placeholder="Ссылка на картинку" aria-label="ссылка"
             name="link" required>
           <span class="photo-link-error"></span>
-          <button type="submit" class="form__profile-save" disabled="true">Создать</button>
+          <button type="submit" class="form__profile-save" disabled="true" value="Создать">Создать</button>
         </fieldset>
       </form>
     </div>
@@ -84,9 +113,10 @@
     <li class="element">
       <img class="element__picture" src="#" alt="#">
       <button class="element__delete" type="button" aria-label="удалить"></button>
+      <h2 class="element__title"></h2>
       <div class="element__container">
-        <h2 class="element__title"></h2>
         <button class="element__like" type="button" aria-label="нравится"></button>
+        <p class="element__like-count">0</p>
       </div>
     </li>
   </template>
