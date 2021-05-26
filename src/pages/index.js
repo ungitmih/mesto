@@ -8,9 +8,9 @@ import PopupWithDelete from "../components/PopupWithDelete.js";
 import UserInfo from "../components/UserInfo.js";
 import Api from "../components/Api.js";
 
-import {popupProfile, profilePopupSelector, popupAddPhoto, photoPopupSelector, popupOpenImage, avatarPopup, avatarPopupSelector, openImageSelector, popupPicture, popupPic, popupPictureName, popupPicName, buttonEdit, editImageButton, editImageButtonSelector, popUpEditButtonSelector, buttonAdd, buttonCloseProfile, buttonClosePhoto, buttonCloseImage, popupButtonClose, name, job, nameInput, jobInput, profileSelectors, nameInputPhoto, linkInputPhoto, formElementProfile, formElementPhoto, profileAvatar, formElementAvatar,  elementsItems, elementsItemsSelector, templateEl, linkInputAvatar, initialCards, formValidation, popupDeleteImage, userId} from "../utils/constants.js";
+import {popupProfile, profilePopupSelector, popupAddPhoto, photoPopupSelector, popupOpenImage, avatarPopup, avatarPopupSelector, openImageSelector, popupPicture, popupPic, popupPictureName, popupPicName, buttonEdit, editImageButton, editImageButtonSelector, popUpEditButtonSelector, buttonAdd, buttonCloseProfile, buttonClosePhoto, buttonCloseImage, popupButtonClose, name, job, nameInput, jobInput, profileSelectors, nameInputPhoto, linkInputPhoto, formElementProfile, formElementPhoto, profileAvatar, formElementAvatar,  elementsItems, elementsItemsSelector, templateEl, linkInputAvatar, initialCards, formValidation, popupDeleteImage} from "../utils/constants.js";
 
-
+let userId = null;
 
 const api = new Api({
   urladdress: 'https://mesto.nomoreparties.co/v1/cohort-24',
@@ -22,8 +22,10 @@ const api = new Api({
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([data, item]) => {
-    userInfo.setUserInfo(data);
-    itemList.renderItems(item)
+    const userData = data;
+    userId = userData._id;
+    userInfo.setUserInfo(userData);
+    itemList.renderItems(item);
   })
   .catch((err) => {
     console.log(err)
@@ -53,9 +55,9 @@ const avatarUpdateValidation = new FormValidator(formValidation, formElementAvat
 const userInfo = new UserInfo(profileSelectors)
 buttonEdit.addEventListener('click', () => {
   popupProfileEdit.open();
-  const personInfo = userInfo.getUserInfo()
-  nameInput.value = personInfo.name
-  jobInput.value = personInfo.about
+  const userData = userInfo.getUserInfo()
+  nameInput.value = userData.name
+  jobInput.value = userData.about
   profileValidate.resetForm();
 })
 

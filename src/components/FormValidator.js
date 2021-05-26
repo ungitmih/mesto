@@ -79,8 +79,8 @@ export class FormValidator {
 
   //очистка полей
   resetForm () {
-    this._inputs.forEach((form) => {
-      this._hideError (form)
+    this._inputs.forEach((input) => {
+      this._hideError (input)
     });
     this._buttonToggle()
   }

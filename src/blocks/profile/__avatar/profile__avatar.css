@@ -2,7 +2,7 @@
   border-radius: 50%;
   width: 100%;
   max-width: 120px;
-  max-height: 120px;
+  height: 120px;
   display: flex;
   justify-content: flex-start;
   object-fit: cover;

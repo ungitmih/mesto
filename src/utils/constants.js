@@ -72,8 +72,6 @@ export const initialCards = [{
 }
 ];
 
-export const userId = '0e1607da5c4552b063dc1e59';
-
 export const formValidation = {
     formSelector: '.form',
     inputSelector: '.form__input',
